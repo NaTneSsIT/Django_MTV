@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        {% include 'common/head.html' %}
+   </head>
+
+    <body>
+        <h1>Sửa nhân viên theo ID</h1>
+        <form method="post" action="/editEmployee" enctype="multipart/form-data">
+             {% csrf_token %} 
+             <label for="id" style="width:150px;">ID:</label>
+             <input name="id" id='id' type="text" style="margin-left:50px" />
+             <br/>
+             <label for="department" style="width:150px;">Phòng ban:</label>
+             <select name="department" id='department' style="margin-left:50px">
+                <option value="">----Select-----</option>
+                {% for department in department_list %}
+                <option value="{{department.department_id}}">{{department.name}}</optiton>
+                {% endfor %}
+             </select>
+             <br/>
+             <label  for="name" style="width:150px;" >Tên nhân viên:</label>
+             <input style="margin-left:50px" name="name" type="text" /><br/>
+             <label  for="age" style="width:150px;">Tuổi:</label>
+             <input style="margin-left:50px" name="age" type="text" /><br/>
+             <label  for="avatar" style="width:150px;">Avatar:</label>
+             <input style="margin-left:50px" name="avatar" type="file" /><br/>
+             <label for="cv" style="width:150px;">CV:</label>
+             <input style="margin-left:50px" name="cv" type="file" /><br/>
+
+             <button type="submit" class="btn btn-primary">EDIT</button>
+        </form>
+    </body>
+</html>

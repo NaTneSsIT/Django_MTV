@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        {% include 'common/head.html' %}
+   </head>
+
+    <body>
+        {% include 'common/nav.html' %}
+        <h1>{{department.name}}</h1>
+        <table class="table table-bordered">
+            <thead>
+                <tr bgcolor="lightcyan">
+                    <td>
+                        ID
+                    </td>
+                    <td>Tên nhân viên</td>
+                    <td>Tuổi</td>
+                    <td>Avatar</td>
+                    <td>CV</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for employee in employee_list %}
+                <tr>
+                    <td>{{employee.employee_id}}</td>
+                    <td>{{employee.name}}</td>
+                    <td>{{employee.age}}</td>
+                    <td><img src="/home/media/{{employee.avatar}}" class="img" style="width:80px; height:80px"></td>
+                    <td><a href="/home/media/{{employee.cv}}" target="_blank">{{employee.cv}}</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button class="btn btn-light" style="border:solid 1px">
+            <a href="/addEmployeeForm" style="text-decoration:none;">ADD</a>
+        </button>
+        <button class="btn btn-light" style="border:solid 1px">
+            <a href="/editEmployeeForm" style="text-decoration:none;">EDIT</a>
+        </button>
+        <button class="btn btn-light" style="border:solid 1px">
+            <a href="/deleteEmployeeForm" style="text-decoration:none;">DELETE</a>
+        </button>
+    </body>
+</html>
